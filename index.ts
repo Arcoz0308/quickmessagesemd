@@ -1,4 +1,4 @@
-import { Client, IntentsBitField, ChannelType, TextChannel } from "discord.js";
+import { Client, IntentsBitField, ChannelType} from "discord.js";
 import 'dotenv/config';
 
 const client = new Client({
@@ -13,10 +13,8 @@ client.on("ready", () => {
   const channelId = process.env.CHANNEL_ID || "";
   const guild = client.guilds.cache.get(guildId);
 
-  // Check if guild is undefined.
   if (!guild) {
-    console.log("Guild is undefined.");
-    return;
+    throw new Error("Guild is undefined.");
   }
 
   const channel = guild.channels.cache.get(channelId);
